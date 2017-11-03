@@ -18,7 +18,7 @@ global.fetch = require('node-fetch');
 
 describe('Spotify Wrapper', () => {
   describe('smoke test', () => {
-    it('shoud exist the search method', () => {
+    it('shoud exist the search method', () => {5
       expect(search).to.exist;
     });
 
@@ -40,26 +40,52 @@ describe('Spotify Wrapper', () => {
   });
 
   describe('Generic Search', () => {
+    let fetchedStub;
+    let promise;
+
+    beforeEach(() => {
+      fetchedStub = sinon.stub(global, 'fetch');
+      promise = fetchedStub.returnsPromise();
+    });
+
+    afterEach(() => {
+      fetchedStub.restore();
+
+    });
     it('should call fetch function', () => {
-      const fetchStub = sinon.stub(global, 'fetch');
       const artists = search();
 
-      expect(fetchStub).to.have.been.calledOnce;
-
-      fetchStub.restore();
+      expect(fetchedStub).to.have.been.calledOnce;
     });
 
     it('should receive the correct url to fetch', () => {
-      const fetchStub = sinon.stub(global, 'fetch');
+
+      context('passing one type', () => {
+        const artists = search('incubus', 'artist');
+
+        expect(fetchedStub).to.have.been
+          .calledWith('https://api.spotify.com/v1/search?q=incubus&type=artist')
+
+        const albums = search('incubus', 'album')
+
+        expect(fetchedStub).to.have.been
+          .calledWith('https://api.spotify.com/v1/search?q=incubus&type=album')
+      });
+
+      context('passing more than type', () => {
+        const artistsAndAlbums = search('incubus', ['artist', 'album']);
+
+        expect(fetchedStub).to.have.been
+          .calledWith('https://api.spotify.com/v1/search?q=incubus&type=artist,album')
+      });
+    });
+
+    it('should return the JSON Data from the promise', () => {
+      promise.resolves({ body: 'json' });
       const artists = search('incubus', 'artist');
-
-      expect(fetchStub).to.have.been
-        .calledWith('https://api.spotify.com/v1/search?q=incubus&type=artist')
-
-      const albums = search('incubus', 'album')
-
-      expect(fetchStub).to.have.been
-        .calledWith('https://api.spotify.com/v1/search?q=incubus&type=album')
+      console.log(promise.thenable.resolveValue)
+      console.log(artists)
+      expect(artists.resolveValue).to.be.eql({ body: 'json' });
     });
   });
 });
