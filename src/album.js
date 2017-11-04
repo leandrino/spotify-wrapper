@@ -1,4 +1,4 @@
 const getAlbum = () => {};
-const getAlbumTracks = () => {}
+const getAlbumTracks = () => {};
 
 export { getAlbum, getAlbumTracks };
