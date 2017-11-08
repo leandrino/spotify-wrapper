@@ -1,13 +1,13 @@
-const getAlbum = (id) => {
+const getAlbum = id =>
   fetch(`https://api.spotify.com/v1/albums/${id}`)
     .then(data => data.json());
-};
 
-const getAlbums = (id) => {
-  fetch(`https://api.spotify.com/v1/albums/?ids=${id}`)
+const getAlbums = ids =>
+  fetch(`https://api.spotify.com/v1/albums/?ids=${ids}`)
     .then(data => data.json());
-};
 
-const getAlbumTracks = () => {};
+const getAlbumTracks = album =>
+  fetch(`"https://api.spotify.com/v1/albums/${album}/tracks`)
+    .then(data => data.json());
 
 export { getAlbum, getAlbums, getAlbumTracks };

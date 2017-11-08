@@ -85,4 +85,27 @@ describe('Album', () => {
         expect(albums.resolveValue).to.be.eql({ album: 'name' });
       });
   });
+
+  describe('getAlbumTracks', () => {
+    it('shold call fetch method', () => {
+      const tracks = getAlbumTracks();
+      expect(stubedFetch).to.have.been.calledOnce;
+    });
+
+    it('shold call fetch with the correct URL', () => {
+      const tracks = getAlbumTracks('6akEvsycLGftJxYudPjmqK');
+      expect(stubedFetch).to.have.been
+        .calledWith('"https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/tracks');
+
+      const othersTracks = getAlbumTracks('6akEvsycLGftJxYudPjmql');
+      expect(stubedFetch).to.have.been
+        .calledWith('"https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmql/tracks');
+    });
+
+    it('should return the correct data from promise', () => {
+      promise.resolves({ track: 'one track' });
+      const tracks = getAlbumTracks('6akEvsycLGftJxYudPjmql')
+      expect(tracks.resolveValue).to.be.eql({ track: 'one track' });
+    });
+  });
 });
