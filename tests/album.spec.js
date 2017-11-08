@@ -95,11 +95,11 @@ describe('Album', () => {
     it('shold call fetch with the correct URL', () => {
       const tracks = getAlbumTracks('6akEvsycLGftJxYudPjmqK');
       expect(stubedFetch).to.have.been
-        .calledWith('"https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/tracks');
+        .calledWith('https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/tracks');
 
       const othersTracks = getAlbumTracks('6akEvsycLGftJxYudPjmql');
       expect(stubedFetch).to.have.been
-        .calledWith('"https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmql/tracks');
+        .calledWith('https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmql/tracks');
     });
 
     it('should return the correct data from promise', () => {
