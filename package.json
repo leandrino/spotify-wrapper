@@ -1,8 +1,8 @@
 {
-  "name": "spotify-wrapper",
+  "name": "leandrino-spotify-wrapper",
   "version": "1.0.1",
   "description": "A wrapper to work with the Spotify Web API.",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "clear": "./node_modules/.bin/rimraf lib",
     "build": "./node_modules/.bin/babel --out-dir lib src",
@@ -16,6 +16,10 @@
     "test:coverage": "nyc npm test",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
+  "files": [
+    "dist",
+    "lib"
+  ],
   "nyc": {
     "reporter": [
       "text",
@@ -34,7 +38,7 @@
     "tdd",
     "library"
   ],
-  "author": "Leandro Alexandrino <leandro@leandrino.me> (http://leandrino.me/)",
+  "author": "Leandro Alexandrino <alexandrinowd@gmail.com> (http://leandrino.me/)",
   "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/leandrino/spotify-wrapper/issues"
