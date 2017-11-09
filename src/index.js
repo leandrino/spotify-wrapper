@@ -11,12 +11,11 @@ import {
   getAlbumTracks,
 } from './album';
 
-module.exports = {
-  search,
-  searchArtists,
-  searchAlbums,
-  searchPlaylist,
-  getAlbum,
-  getAlbums,
-  getAlbumTracks,
-};
+import { API_URL } from './config';
+
+export default class SpotifyWrapper {
+  constructor(options) {
+    this.apiURL = options.apiURL || API_URL;
+    this.token = options.token;
+  }
+}
