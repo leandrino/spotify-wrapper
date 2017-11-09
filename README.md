@@ -1,6 +1,7 @@
 # Spotify Wrapper
 
 [![Build Status](https://travis-ci.org/leandrino/spotify-wrapper.svg?branch=master)](https://travis-ci.org/leandrino/spotify-wrapper)
+[![Coverage Status](https://coveralls.io/repos/github/leandrino/spotify-wrapper/badge.svg?branch=master)](https://coveralls.io/github/leandrino/spotify-wrapper?branch=master)
 
 A wrapper to work with the [Spotify Web API](https://developer.spotify.com/web-api/).
 
