@@ -50,7 +50,7 @@ describe('Album', () => {
       const album = getAlbum('0sNOF9WDwhWunNAHPD3Baj');
       expect(stubedFetch).to.have.been.
         calledWith('https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj');
-        
+
         const otherAlbum = getAlbum('0sNOF9WDwhWunNAHPD3Bal')
         expect(stubedFetch).to.have.been.
           calledWith('https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Bal');
@@ -73,7 +73,7 @@ describe('Album', () => {
       const albums = getAlbums(['41MnTivkwTO3UUJ8DrqEJJ', '6JWc4iAiJ9FjyK0B59ABb4']);
       expect(stubedFetch).to.have.been.
         calledWith('https://api.spotify.com/v1/albums/?ids=41MnTivkwTO3UUJ8DrqEJJ,6JWc4iAiJ9FjyK0B59ABb4');
-        
+
         const otherAlbums = getAlbums(['41MnTivkwTO3UUJ8DrqEJJ', '6JWc4iAiJ9FjyK0B59ABb4', '6UXCm6bOO4gFlDQZV5yL37'])
         expect(stubedFetch).to.have.been.
           calledWith('https://api.spotify.com/v1/albums/?ids=41MnTivkwTO3UUJ8DrqEJJ,6JWc4iAiJ9FjyK0B59ABb4,6UXCm6bOO4gFlDQZV5yL37');
