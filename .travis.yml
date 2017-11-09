@@ -11,4 +11,4 @@ before_script:
   - npm run build:umd
   - npm rum build:umd:min
 after_success:
-  -npm run coveralls
+  - npm run coveralls
