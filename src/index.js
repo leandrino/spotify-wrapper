@@ -18,4 +18,14 @@ export default class SpotifyWrapper {
     this.apiURL = options.apiURL || API_URL;
     this.token = options.token;
   }
+
+  request(url) {
+    const headers = {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    };
+
+    return fetch(url, headers);
+  }
 }
