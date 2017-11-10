@@ -3,7 +3,7 @@ import { join } from 'path';
 const include = join(__dirname, 'src');
 
 export default {
-  entry: join(__dirname, 'src', 'index.js'),
+  entry: join(__dirname, 'index.js'),
   output: {
     path: join(__dirname, 'dist'),
     libraryTarget: 'umd',
