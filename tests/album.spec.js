@@ -17,7 +17,7 @@ describe('Album', () => {
   beforeEach(() => {
     spotify = new SpotifyWrapper({
       token:'Bearer 9d9280b03dd43a776628d19beebf0e7795d71ee52c7a68e08da76ef32f761482'
-    })
+    });
     stubedFetch = sinon.stub(global, 'fetch');
     promise = stubedFetch.returnsPromise();
   });
